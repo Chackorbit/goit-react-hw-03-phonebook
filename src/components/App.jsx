@@ -64,9 +64,26 @@ export default class App extends React.Component {
     }));
   };
 
+  componentDidMount() {
+    console.log('App componentDidMount');
+
+    const contacts = JSON.parse(localStorage.getItem('contacts'));
+    this.setState({ contacts: contacts });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('App componentDidUpdate');
+
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('Обновили контакты');
+
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   render() {
     const { contacts, filter } = this.state;
-    console.log('Перерендер');
+
     return (
       <div className={s.section}>
         <p className={s.title}>Phonebook</p>
