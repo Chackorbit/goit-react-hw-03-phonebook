@@ -1,7 +1,7 @@
 import s from './ContactList.module.css';
-import { nanoid } from 'nanoid';
 import React from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
+import ContactItem from '../ContactItem/ContactItem';
+import { nanoid } from 'nanoid';
 
 export default class ContactList extends React.Component {
   state = {};
@@ -16,15 +16,13 @@ export default class ContactList extends React.Component {
             <p>We dont have contacts</p>
           ) : (
             fullList.map(el => (
-              <li className={s.li} key={nanoid()}>
-                {el.name}: {el.number}
-                <button
-                  className={s.btnDelete}
-                  onClick={() => this.props.deleteContact(el.id)}
-                >
-                  <AiOutlineClose />
-                </button>
-              </li>
+              <ContactItem
+                key={nanoid()}
+                name={el.name}
+                number={el.number}
+                id={el.id}
+                deleteContact={this.props.deleteContact}
+              />
             ))
           )}
         </ul>

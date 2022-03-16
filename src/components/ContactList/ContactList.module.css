@@ -13,16 +13,3 @@
   font-weight: normal;
   font-size: 18px;
 }
-
-.li {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.btnDelete {
-  margin-left: auto;
-  text-align: center;
-
-  background-color: rgb(250, 60, 60);
-  border: none;
-}
